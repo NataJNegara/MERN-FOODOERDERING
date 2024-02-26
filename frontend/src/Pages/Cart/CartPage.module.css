@@ -1,0 +1,10 @@
+.back_button {
+  margin-bottom: 3.6rem;
+  display: inline-block;
+  color: var(--text-gray-800);
+  transition: all 0.3s;
+}
+
+.back_button:hover {
+  color: var(--text-yellow-500);
+}

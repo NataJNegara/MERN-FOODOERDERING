@@ -80,3 +80,12 @@
   padding: 0.2rem 0.8rem;
   border-radius: 50%;
 }
+
+.cart {
+  transition: all 0.3s;
+}
+
+.cart:hover .cartCount {
+  background-color: #fff;
+  color: #f59f00;
+}

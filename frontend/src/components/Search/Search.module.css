@@ -1,0 +1,18 @@
+.searchContainer {
+  text-align: center;
+  margin-bottom: 3.6rem;
+}
+
+.search {
+  outline: none;
+  border: 1px solid #fcc419;
+  padding: 1rem 1.6rem;
+  border-radius: 10rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  width: 20rem;
+  transition: all 0.3s;
+}
+
+.search:focus {
+  width: 40rem;
+}

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9.6rem;
+  gap: 1.6rem;
+}
+
+.message {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--text-gray-500);
+}
+
+.container button {
+  border: none;
+  font-size: 1.6rem;
+  background-color: var(--bg-primary);
+  color: var(--text-gray-0);
+  font-weight: 500;
+  padding: 1.2rem 1.6rem;
+  border-radius: 10rem;
+  cursor: pointer;
+}

@@ -39,6 +39,10 @@
   position: relative;
 }
 
+.profile {
+  font-size: 1.8rem;
+}
+
 .menu {
   position: absolute;
   display: none;
@@ -74,18 +78,25 @@
   display: block;
 }
 
-.cartCount {
-  background-color: #f59f00;
-  color: #fff;
-  padding: 0.2rem 0.8rem;
-  border-radius: 50%;
-}
-
 .cart {
   transition: all 0.3s;
+  font-size: 1.8rem;
 }
 
 .cart:hover .cartCount {
   background-color: #fff;
   color: #f59f00;
+}
+
+.cartCount {
+  background-color: #f59f00;
+  color: #fff;
+  border-radius: 50%;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 0.4rem;
 }

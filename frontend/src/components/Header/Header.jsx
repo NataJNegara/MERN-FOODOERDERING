@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getTotalCart } from "../../features/cart/cartSlice";
 import { useUser } from "../../features/auth/useUser";
 import { useLogout } from "../../features/auth/useLogout";
+import { IoCart, IoPerson } from "react-icons/io5";
 
 export default function Header() {
   const { user, isLoading } = useUser();
@@ -28,7 +29,11 @@ export default function Header() {
               <li className={styles.menuContainer}>
                 <>
                   {isLoading && <p>...</p>}
-                  {!isLoading && <Link to={"/profile"}>{user.username}</Link>}
+                  {!isLoading && (
+                    <Link to={"/profile"} className={styles.profile}>
+                      <IoPerson />
+                    </Link>
+                  )}
                 </>
                 <div className={styles.menu}>
                   <Link to={"/profile"}>Profile</Link>
@@ -46,9 +51,9 @@ export default function Header() {
                 <Link to={"/login"}>Login</Link>
               </>
             )}
-            <li>
+            <li className={styles.cart_container}>
               <Link to={"/cart"} className={styles.cart}>
-                Cart{" "}
+                <IoCart />
                 {totalCart > 0 && (
                   <span className={styles.cartCount}>{totalCart}</span>
                 )}

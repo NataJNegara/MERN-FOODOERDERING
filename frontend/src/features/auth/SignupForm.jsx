@@ -1,12 +1,9 @@
 import { useForm } from "react-hook-form";
 import FormRow from "../../components/FormRow/FormRow";
 import styles from "./LoginForm.module.css";
-import { useUser } from "./useUser";
-import { Navigate } from "react-router-dom";
 import { useSignup } from "./useSignup";
 
 export default function SignupForm() {
-  const { user } = useUser();
   const { isSignup, signup } = useSignup();
 
   const {
@@ -19,8 +16,6 @@ export default function SignupForm() {
   function onSubmit({ email, username, password, address }) {
     signup({ email, username, password, address });
   }
-
-  if (user) return <Navigate to="/" />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

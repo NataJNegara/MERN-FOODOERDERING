@@ -2,12 +2,9 @@ import { useForm } from "react-hook-form";
 import { useLogin } from "./useLogin";
 import FormRow from "../../components/FormRow/FormRow";
 import styles from "./LoginForm.module.css";
-import { useUser } from "./useUser";
-import { Navigate } from "react-router-dom";
 
 export default function LoginForm() {
   const { isLogin, login } = useLogin();
-  const { user } = useUser();
 
   const {
     register,
@@ -18,14 +15,6 @@ export default function LoginForm() {
   function onSubmit(data) {
     login(data);
   }
-
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate("/");
-  //   }
-  // }, [user, navigate]);
-
-  if (user) return <Navigate to="/" />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

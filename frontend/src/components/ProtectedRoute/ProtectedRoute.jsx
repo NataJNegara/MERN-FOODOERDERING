@@ -1,16 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../features/auth/useUser";
 import { useEffect } from "react";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 export default function ProtectedRoute({ children }) {
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      navigate("/");
+    if (!user && !isLoading) {
+      navigate("/login");
     }
-  }, [user, navigate]);
+  }, [user, navigate, isLoading]);
 
-  return !user ? children : null;
+  if (isLoading) return <LoadingSpinner />;
+
+  return user ? children : null;
 }

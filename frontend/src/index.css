@@ -2,6 +2,8 @@
 
 :root {
   --bg-primary: #fcc419;
+  --bg-red-700: #f03e3e;
+  --bg-red-600: #fa5252;
   --bg-yellow-600: #fab005;
 
   --bg-gray-100: #f8f9fa;
@@ -17,6 +19,7 @@
   --text-gray-700: #495057;
   --text-gray-800: #343a40;
   --text-yellow-500: #fcc419;
+  --text-yellow-600: #fab005;
 }
 
 * {

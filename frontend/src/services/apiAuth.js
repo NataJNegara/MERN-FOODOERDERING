@@ -41,3 +41,24 @@ export async function signup({ email, username, password, address }) {
     throw Error(error.response.data.error);
   }
 }
+
+// =================================UPDATE USER
+export async function updateUser({ username, address }) {
+  const { data } = await axios.put("/api/users/updateUser", {
+    username,
+    address,
+  });
+  localStorage.setItem("user", JSON.stringify(data));
+
+  return data;
+}
+
+// =================================UPDATE USER PASSWORD
+export async function updatePassword(newPassword) {
+  try {
+    const { data } = await axios.put("/api/users/updatePassword", newPassword);
+    return data;
+  } catch (error) {
+    throw Error(error.response.data.error);
+  }
+}

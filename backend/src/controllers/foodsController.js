@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { sampleData } from "../data.js";
 import Food from "../models/FoodModel.js";
 
 // =====================================GET FOODS

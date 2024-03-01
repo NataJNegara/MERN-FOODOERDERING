@@ -30,7 +30,9 @@ export const loginUser = async (req, res) => {
   try {
     // create jwt
     const token = createToken(user.id);
-    res.status(200).json({ email, username: user.username, token });
+    res
+      .status(200)
+      .json({ email, username: user.username, address: user.address, token });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -62,10 +64,76 @@ export const signup = async (req, res) => {
       password: hash,
       address,
     });
-    return res
+    res
       .status(200)
       .json({ message: "new user has been added successful", email });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// ==============================================UPDATE USER
+export const updateUser = async (req, res) => {
+  const { username, address } = req.body;
+  // check if data is empty
+  if (!username || !address) {
+    return res
+      .status(400)
+      .json({ error: "Username or Address should not be empty!" });
+  }
+
+  try {
+    // grab curr user from auth and update user
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { username, address },
+      { new: true }
+    );
+
+    // create new token
+    const token = createToken(user.id);
+
+    res.status(200).json({
+      success: "User profile updated successfully",
+      email: user.email,
+      username: user.username,
+      address: user.address,
+      token,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// ==============================================UPDATE USER PASSWORD
+export const updatePassword = async (req, res) => {
+  const { currPassword, newPassword } = req.body;
+
+  // if input empty
+  if (!currPassword || !newPassword) {
+    return res.status(400).json({ error: "All field is required" });
+  }
+
+  // grab curr user and
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    return res.status(400).json({ error: "User is invalid" });
+  }
+
+  // check if curr user password match
+  const match = bcrypt.compareSync(currPassword, user.password);
+  if (!match) {
+    return res.status(400).json({ error: "Password is not correct!" });
+  }
+
+  // hash new password
+  const salt = bcrypt.genSaltSync();
+  const hash = bcrypt.hashSync(newPassword, salt);
+
+  try {
+    const updatedPassword = await user.updateOne({ password: hash });
+    res.status(200).json({ success: "Password change successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

@@ -7,6 +7,7 @@ import store from "./store.js";
 import "./axiosConfig.js";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import "./interceptors/authInterceptors.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.container h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-yellow-600);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content p {
+  display: inline-block;
+  font-weight: 500;
+}
+
+.content span {
+  display: inline-block;
+  text-indent: 10px;
+}
+
+.map_container {
+  align-self: baseline;
+}
+
+.payment {
+  text-align: center;
+  width: 100%;
+}
+
+.payment a {
+  background-color: var(--bg-primary);
+  color: var(--text-gray-0);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 32px;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+}
+
+.payment a:hover {
+  background-color: var(--bg-yellow-600);
+}

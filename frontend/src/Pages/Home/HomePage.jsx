@@ -3,6 +3,7 @@ import Search from "../../components/Search/Search";
 import Thumbnails from "../../features/home/Thumbnails";
 import { useFoods } from "../../features/home/useFoods";
 import FoodsOperation from "../../features/food/FoodsOperation";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
@@ -16,9 +17,9 @@ export default function HomePage() {
 
   return (
     <div>
+      {isLoading && <LoadingSpinner />}
       <Search setSearch={setSearch} />
       <FoodsOperation />
-      {isLoading && <p>Loading...</p>}
       {!isLoading && <Thumbnails foods={filteredFoods} setSearch={setSearch} />}
     </div>
   );

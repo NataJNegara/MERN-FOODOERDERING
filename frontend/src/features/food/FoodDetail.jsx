@@ -7,6 +7,7 @@ import NotFound from "../../components/NotFound/NotFound";
 import { useDispatch } from "react-redux";
 import { addItem } from "../cart/cartSlice";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 
 export default function FoodDetail() {
   const { food, isLoading } = useFood();
@@ -19,10 +20,9 @@ export default function FoodDetail() {
     navigate("/cart");
   }
 
-  if (isLoading) return <p>loading...</p>;
-
   return (
     <>
+      {isLoading && <LoadingSpinner />}
       {!food && <NotFound />}
       {food && (
         <div className={styles.food_container}>

@@ -12,6 +12,7 @@ import CheckoutPage from "./Pages/Checkout/CheckoutPage";
 import PaymentPage from "./Pages/Payment/PaymentPage";
 import OrderTrackPage from "./Pages/Track/OrderTrackPage";
 import ProfilePage from "./Pages/Profile/ProfilePage";
+import OrdersPage from "./Pages/Orders/OrdersPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -62,6 +63,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/orders"
+              element={
+                <ProtectedRoute>
+                  <OrdersPage />
                 </ProtectedRoute>
               }
             />

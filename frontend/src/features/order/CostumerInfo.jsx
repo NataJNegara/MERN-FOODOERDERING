@@ -57,6 +57,7 @@ export default function CostumerInfo() {
               type="text"
               id="name"
               {...register("name", { required: "This field is requried" })}
+              defaultValue={user.username}
             />
           </FormRow>
           <FormRow label="Address" error={errors?.address?.message}>
@@ -65,6 +66,7 @@ export default function CostumerInfo() {
               type="text"
               id="address"
               {...register("address", { required: "This field is requried" })}
+              defaultValue={user.address}
             />
           </FormRow>
         </div>

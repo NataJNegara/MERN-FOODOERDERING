@@ -49,6 +49,7 @@ function Buttons({ order }) {
   };
 
   const onError = (err) => {
+    console.log(err.message);
     toast.error("Oops something wrong, try again later", "Error");
   };
 

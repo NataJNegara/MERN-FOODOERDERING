@@ -71,3 +71,24 @@ export const getOrderById = async (req, res) => {
   }
   return res.send(order);
 };
+
+// ======================================GET ORDERS(ALL) CURR USER
+export const getCurrUserOrders = async (req, res) => {
+  // get curr logged user
+  const user = await User.findById(req.user.id);
+
+  // check if curr user is admin he able to see all orders
+  const filter = {};
+  if (!user.isAdmin) {
+    filter.user = user._id;
+  }
+
+  try {
+    const orders = await Order.find(filter).sort({
+      createdAt: "desc",
+    });
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

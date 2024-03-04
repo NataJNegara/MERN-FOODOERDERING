@@ -39,3 +39,22 @@ export async function getOrderById(orderId) {
     throw Error(error.message);
   }
 }
+
+// ============================get curr user orders
+export async function getCurrOrders({ filter }) {
+  try {
+    const { data } = await axios.get("/api/orders/currUserOrders");
+    const orders = data.orders;
+
+    if (filter) {
+      const filteredData = await orders.filter(
+        (order) => order.status === filter.value
+      );
+      return filteredData;
+    }
+
+    return orders;
+  } catch (error) {
+    throw Error(error.message);
+  }
+}

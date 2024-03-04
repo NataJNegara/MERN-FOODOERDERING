@@ -4,16 +4,25 @@ import Rupiah from "../../helper/formatCurrency";
 import { useOrders } from "./userOrders";
 import DateTime from "../../components/DateTime/DateTime";
 import NotFound from "../../components/NotFound/NotFound";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Orders() {
   const { isLoading, orders } = useOrders();
+  const [searchParams] = useSearchParams();
+  const orderStatus = searchParams.get("status");
+  const navigate = useNavigate();
 
   if (isLoading) return <LoadingSpinner />;
 
   return (
     <>
-      {orders.length === 0 && <NotFound />}
+      {orders.length === 0 && (
+        <NotFound
+          btnText={orderStatus ? "Show All" : "Back to home"}
+          onReset={orderStatus ? () => navigate("/orders") : null}
+        />
+      )}
+
       <div className={styles.container}>
         {orders.map((order) => (
           <div key={order._id} className={styles.order_item}>

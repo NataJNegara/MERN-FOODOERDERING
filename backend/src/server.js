@@ -5,9 +5,14 @@ import { foodsRoutes } from "./routes/foodsRoutes.js";
 import { usersRoutes } from "./routes/usersRoutes.js";
 import { ordersRoutes } from "./routes/ordersRouter.js";
 import { dbConnect } from "./config/dbConfig.js";
+import { fileURLToPath } from "url";
+import path, { dirname } from "path";
 
 // db
 dbConnect();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +28,14 @@ app.use(
 app.use("/api/foods", foodsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", ordersRoutes);
+
+const publicFolder = path.join(__dirname, "public");
+app.use(express.static(publicFolder));
+
+app.get("*", (req, res) => {
+  const indexFilePath = path.join(publicFolder, "index.html");
+  res.sendFile(indexFilePath);
+});
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

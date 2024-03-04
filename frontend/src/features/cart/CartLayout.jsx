@@ -14,7 +14,7 @@ export default function CartLayout() {
 
   return (
     <div>
-      <p className={styles.cart_title}>Your cart, {user.username}</p>
+      <p className={styles.cart_title}>Your cart, {user?.username}</p>
       {carts.length === 0 && <NotFound />}
       {carts.length > 0 && (
         <div className={styles.cart_container}>

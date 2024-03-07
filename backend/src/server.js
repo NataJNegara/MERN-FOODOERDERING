@@ -7,6 +7,7 @@ import { ordersRoutes } from "./routes/ordersRouter.js";
 import { dbConnect } from "./config/dbConfig.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
+import { uploadRoutes } from "./routes/uploadRoutes.js";
 
 // db
 dbConnect();
@@ -28,6 +29,7 @@ app.use(
 app.use("/api/foods", foodsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", ordersRoutes);
+app.use("/api/upload", uploadRoutes);
 
 const publicFolder = path.join(__dirname, "public");
 app.use(express.static(publicFolder));

@@ -1,0 +1,73 @@
+.container {
+  width: 100%;
+  max-width: 90rem;
+  margin-top: 6.2rem;
+}
+
+.food_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  border-bottom: 1px solid var(--bg-gray-200);
+}
+
+.food_container img {
+  width: 100px;
+  border-radius: 10px;
+  margin: 1.6rem 0;
+}
+
+.food_container .name {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-yellow-500);
+  transition: all 0.3s ease;
+}
+
+.food_container .name:hover {
+  color: var(--text-yellow-600);
+}
+
+.food_container span {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.food_container span a {
+  background-color: var(--text-yellow-500);
+  color: var(--text-gray-0);
+  padding: 16px;
+  border-radius: 10px;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.food_container span a:hover {
+  background-color: var(--text-yellow-600);
+}
+
+.food_container .delete_button {
+  border: none;
+  background-color: var(--bg-red-600);
+  color: var(--text-gray-0);
+  padding: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.food_container .delete_button:hover {
+  background-color: var(--bg-red-700);
+}
+
+@media (max-width: 700px) {
+  .food_container {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1.6rem;
+  }
+  .food_container img {
+    grid-area: 2;
+  }
+}

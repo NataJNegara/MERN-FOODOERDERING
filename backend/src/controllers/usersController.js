@@ -4,8 +4,8 @@ import User from "../models/UserModel.js";
 import bcrypt from "bcryptjs";
 
 // ==============================================CREATE JWT
-const createToken = (id) => {
-  return jwt.sign({ id }, process.env.SECRET, { expiresIn: "14d" });
+const createToken = (id, isAdmin) => {
+  return jwt.sign({ id, isAdmin }, process.env.SECRET, { expiresIn: "14d" });
 };
 
 // ==============================================LOGIN
@@ -29,10 +29,14 @@ export const loginUser = async (req, res) => {
 
   try {
     // create jwt
-    const token = createToken(user.id);
-    res
-      .status(200)
-      .json({ email, username: user.username, address: user.address, token });
+    const token = createToken(user.id, user.isAdmin);
+    res.status(200).json({
+      email,
+      username: user.username,
+      address: user.address,
+      isAdmin: user.isAdmin,
+      token,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

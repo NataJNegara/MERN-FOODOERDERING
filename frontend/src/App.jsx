@@ -13,6 +13,10 @@ import PaymentPage from "./Pages/Payment/PaymentPage";
 import OrderTrackPage from "./Pages/Track/OrderTrackPage";
 import ProfilePage from "./Pages/Profile/ProfilePage";
 import OrdersPage from "./Pages/Orders/OrdersPage";
+import DashboardPage from "./Pages/Dashboard/DashboardPage";
+import FoodsPage from "./Pages/Foods/FoodsPage";
+import ProtectedAdminRoute from "./components/ProtectedAdminRoute/ProtectedAdminRoute";
+import AddFoodForm from "./features/food/AddFoodForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -71,6 +75,44 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <OrdersPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/foods"
+              element={
+                <ProtectedRoute>
+                  <ProtectedAdminRoute>
+                    <FoodsPage />
+                  </ProtectedAdminRoute>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/addFood"
+              element={
+                <ProtectedRoute>
+                  <ProtectedAdminRoute>
+                    <AddFoodForm />
+                  </ProtectedAdminRoute>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/editFood/:foodId"
+              element={
+                <ProtectedRoute>
+                  <ProtectedAdminRoute>
+                    <AddFoodForm />
+                  </ProtectedAdminRoute>
                 </ProtectedRoute>
               }
             />

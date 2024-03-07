@@ -5,7 +5,7 @@ export const FoodSchema = new mongoose.Schema(
     name: { type: String, required: true },
     price: { type: Number, required: true },
     preparingTime: { type: String, required: true },
-    favorite: { type: Boolean, defualt: false },
+    favorite: { type: Boolean, default: false },
     origins: { type: [String], required: true },
     stars: { type: Number, default: 5 },
     imageUrl: { type: String, required: true },

@@ -16,6 +16,8 @@ export async function getFoods({ filter }) {
 
 // ============================get food by id
 export async function getFoodByID(foodId) {
+  if (!foodId) return null;
+
   try {
     const { data } = await axios.get(`/api/foods/${foodId}`);
     return data.food;
@@ -31,5 +33,35 @@ export async function getTags() {
     return data;
   } catch (error) {
     throw new Error("failed to fetch tags data");
+  }
+}
+
+// ============================get food tags
+export async function deleteFood(foodId) {
+  try {
+    const { data } = await axios.delete(`/api/foods/${foodId}`);
+    return data;
+  } catch (error) {
+    throw Error(error.response.data.error);
+  }
+}
+
+// ==============================add food
+export async function addFood(newFood) {
+  try {
+    const { data } = await axios.post("/api/foods/", newFood);
+    return data;
+  } catch (error) {
+    throw Error(error.response.data.error);
+  }
+}
+
+// ==============================update food
+export async function update(food) {
+  try {
+    const { data } = await axios.put("/api/foods/", food);
+    return data;
+  } catch (error) {
+    throw Error(error.response.data.error);
   }
 }

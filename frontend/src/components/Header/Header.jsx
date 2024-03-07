@@ -30,7 +30,7 @@ export default function Header() {
                 <>
                   {isLoading && <p>...</p>}
                   {!isLoading && (
-                    <Link to={"/profile"} className={styles.profile}>
+                    <Link to={"/dashboard"} className={styles.profile}>
                       <IoPerson />
                     </Link>
                   )}

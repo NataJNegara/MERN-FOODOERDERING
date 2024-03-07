@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, requried: true },
     address: { type: String, requried: true },
     isAdmin: { type: Boolean, default: false },
+    isBlocked: { type: Boolean, default: false },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

@@ -62,3 +62,43 @@ export async function updatePassword(newPassword) {
     throw Error(error.response.data.error);
   }
 }
+
+// =================================GET ALL USER
+export async function getUsers() {
+  try {
+    const { data } = await axios.get("/api/users/");
+    return data.users;
+  } catch (error) {
+    throw new Error("Failed to fetch users data");
+  }
+}
+
+// =================================BLOCK USER
+export async function block(id) {
+  try {
+    const { data } = await axios.put("/api/users/toggleBlock/" + id);
+    return data;
+  } catch (error) {
+    throw new Error("Failed to fetch users data");
+  }
+}
+
+// =================================GET  USER BY ID
+export async function getUserById(id) {
+  try {
+    const { data } = await axios.get("/api/users/" + id);
+    return data.user;
+  } catch (error) {
+    throw new Error("Failed to fetch users data");
+  }
+}
+
+// =================================UPDATE USER BY ID
+export async function updateUserById(newData) {
+  try {
+    const { data } = await axios.put("/api/users/updateUserById", newData);
+    return data;
+  } catch (error) {
+    throw Error(error.response.data.error);
+  }
+}

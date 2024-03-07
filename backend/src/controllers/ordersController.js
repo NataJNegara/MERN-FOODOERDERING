@@ -1,3 +1,4 @@
+import { sendEmailReceipt } from "../helpers/mailHelper.js";
 import Order from "../models/OrderModel.js";
 import User from "../models/UserModel.js";
 
@@ -15,7 +16,11 @@ export const createOrder = async (req, res) => {
   });
 
   //   create new Order
-  const newOrder = new Order({ ...order, user: req.user.id });
+  const newOrder = new Order({
+    ...order,
+    user: req.user.id,
+    email: req.user.email,
+  });
   await newOrder.save();
   res.send(newOrder);
 };
@@ -45,6 +50,10 @@ export const payment = async (req, res) => {
 
   try {
     await order.save();
+
+    // sending email
+    sendEmailReceipt(order);
+
     res.send(order._id);
   } catch (error) {
     res.status(500).json({ error: error.message });

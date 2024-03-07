@@ -17,6 +17,8 @@ import DashboardPage from "./Pages/Dashboard/DashboardPage";
 import FoodsPage from "./Pages/Foods/FoodsPage";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute/ProtectedAdminRoute";
 import AddFoodForm from "./features/food/AddFoodForm";
+import UsersPage from "./Pages/User/UsersPage";
+import UpdateUserForm from "./features/auth/UpdateUserForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -112,6 +114,26 @@ export default function App() {
                 <ProtectedRoute>
                   <ProtectedAdminRoute>
                     <AddFoodForm />
+                  </ProtectedAdminRoute>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute>
+                  <ProtectedAdminRoute>
+                    <UsersPage />
+                  </ProtectedAdminRoute>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/update-user/:userId"
+              element={
+                <ProtectedRoute>
+                  <ProtectedAdminRoute>
+                    <UpdateUserForm />
                   </ProtectedAdminRoute>
                 </ProtectedRoute>
               }

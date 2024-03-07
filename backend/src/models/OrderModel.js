@@ -38,6 +38,7 @@ const OrderSchema = new mongoose.Schema(
     items: { type: Array, required: true },
     status: { type: String, default: "new" },
     user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
+    email: { type: String, required: true },
   },
   {
     timestamps: true,

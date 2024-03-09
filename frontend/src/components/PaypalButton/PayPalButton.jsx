@@ -12,16 +12,18 @@ const initialOptions = {
   intent: "capture",
 };
 
-export default function PayPalButton({ order }) {
+export default function PayPalButton({ order, amount }) {
   return (
     <PayPalScriptProvider options={initialOptions}>
-      <Buttons order={order} />
+      <Buttons order={order} amount={amount} />
     </PayPalScriptProvider>
   );
 }
 
-function Buttons({ order }) {
+function Buttons({ order, amount }) {
   const navigate = useNavigate();
+
+  // console.log(Number(amount));
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -29,7 +31,7 @@ function Buttons({ order }) {
         {
           amount: {
             currency_code: "USD",
-            value: order.order.totalPrice,
+            value: Number(amount),
           },
         },
       ],

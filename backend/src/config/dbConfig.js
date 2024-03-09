@@ -8,7 +8,7 @@ set("strictQuery", true);
 
 export const dbConnect = async () => {
   try {
-    connect(process.env.MONGO_URI);
+    connect(process.env.MONGO_URI, { dbName: "mern-food" });
     // seeding
     await seedUsers();
     await seedFoods();

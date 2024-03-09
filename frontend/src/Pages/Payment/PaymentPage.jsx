@@ -4,11 +4,26 @@ import LoadingSpinner from "../../components/Spinner/LoadingSpinner";
 import OrderItems from "../../features/order/OrderItems";
 import Map from "../../components/Map/Map";
 import PayPalButton from "../../components/PaypalButton/PayPalButton";
+import { useEffect, useState } from "react";
 
 export default function PaymentPage() {
-  //   const [order, setOrder] = useState();
-
+  const [convertedCurrency, setConvertedCurreny] = useState(0);
   const { order, isLoading } = useOrder();
+
+  // convert currency
+  const convertCurrency = async (amount) => {
+    const res = await fetch(
+      `https://api.frankfurter.app/latest?amount=${amount}&from=IDR&to=USD`
+    );
+    const data = await res.json();
+    const toUSD = Number((Math.round(data.rates.USD * 100) / 100).toFixed(2));
+    // console.log(toUSD);
+    setConvertedCurreny(toUSD);
+  };
+
+  useEffect(() => {
+    convertCurrency(order?.order?.totalPrice);
+  }, [order?.order?.totalPrice]);
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -39,7 +54,9 @@ export default function PaymentPage() {
 
         <div className={styles.buttons_container}>
           <div className={styles.buttons}>
-            <PayPalButton order={order} />
+            {convertedCurrency !== 0 && (
+              <PayPalButton order={order} amount={convertedCurrency} />
+            )}
           </div>
         </div>
       </div>

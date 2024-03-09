@@ -76,8 +76,6 @@ export default function CostumerInfo() {
             location={orders.addressLatLng}
             onChange={(latlng) => {
               setOrders({ ...orders, addressLatLng: latlng });
-              // const address = { addressLatLng: latlng };
-              // setOrders((orders) => [...orders, address]);
             }}
           />
         </div>

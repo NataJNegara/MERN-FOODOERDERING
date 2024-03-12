@@ -13,8 +13,8 @@ import { uploadRoutes } from "./routes/uploadRoutes.js";
 dbConnect();
 
 //
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 //
 
 const app = express();
@@ -23,24 +23,28 @@ app.use(express.json());
 
 app.use(
   cors({
-    credentials: true,
     origin: ["http://localhost:5173"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 
+app.get("/", (_, res) => {
+  res.send("HELLO API");
+});
 app.use("/api/foods", foodsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", ordersRoutes);
 app.use("/api/upload", uploadRoutes);
 
 //
-const publicFolder = path.join(__dirname, "public");
-app.use(express.static(publicFolder));
+// const publicFolder = path.join(__dirname, "public");
+// app.use(express.static(publicFolder));
 
-app.get("*", (req, res) => {
-  const indexFilePath = path.join(publicFolder, "index.html");
-  res.sendFile(indexFilePath);
-});
+// app.get("*", (req, res) => {
+//   const indexFilePath = path.join(publicFolder, "index.html");
+//   res.sendFile(indexFilePath);
+// });
 //
 
 app.listen(PORT, () => {

@@ -1,3 +1,7 @@
+.container {
+  padding: 9.6rem 3.6rem;
+}
+
 .container h1 {
   text-align: center;
   margin-bottom: 3.6rem;

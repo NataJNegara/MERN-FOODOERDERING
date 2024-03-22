@@ -1,3 +1,7 @@
+.container {
+  padding: 9.6rem 3.6rem;
+}
+
 .page_title {
   margin-bottom: 6.2rem;
   color: var(--text-yellow-500);

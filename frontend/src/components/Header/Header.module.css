@@ -1,9 +1,14 @@
 .header {
-  border-bottom: 1px solid #fcc419;
+  /* border-bottom: 1px solid #fcc419; */
+  position: absolute;
+  width: 100%;
+  color: #fff;
+  background-color: transparent;
 }
 
 .header a {
   color: #fcc419;
+  /* color: #fff; */
 }
 
 .header a:hover {

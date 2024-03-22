@@ -13,7 +13,7 @@ export default function CartLayout() {
   const { user } = useUser();
 
   return (
-    <div>
+    <div className={styles.container}>
       <p className={styles.cart_title}>Your cart, {user?.username}</p>
       {carts.length === 0 && <NotFound />}
       {carts.length > 0 && (

@@ -4,6 +4,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 32px;
+  padding-top: 9.6rem;
 }
 
 .container h1 {

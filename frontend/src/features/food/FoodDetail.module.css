@@ -1,10 +1,10 @@
 .food_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 3.6rem auto;
   gap: 3.6rem;
   max-width: 80rem;
-  /*max-height: 40rem; */
+  margin: 0 auto;
+  padding-top: 9.6rem;
 }
 
 .image {
